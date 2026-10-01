@@ -1,0 +1,15 @@
+.root {
+  height: 100dvh;
+}
+
+.chat {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  min-width: 0;
+}
+
+.empty {
+  flex: 1;
+  padding: var(--spacing-size4xl);
+}

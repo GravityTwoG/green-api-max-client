@@ -10,11 +10,13 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
 }
 
 body {
   min-block-size: 100dvh;
   line-height: 1.5;
+  overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
 }
 

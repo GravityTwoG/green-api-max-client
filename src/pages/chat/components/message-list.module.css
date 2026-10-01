@@ -1,0 +1,38 @@
+.list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: none;
+}
+
+.feed {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  width: 100%;
+  max-width: 732px;
+  margin-block-start: auto;
+  margin-inline: auto;
+  padding: 0 var(--spacing-size2xl);
+}
+
+.message {
+  display: flex;
+  margin-block: 1px;
+}
+
+.message:not([data-has-previous]) {
+  margin-block-start: var(--spacing-size-xs);
+}
+
+.message:not([data-has-next]) {
+  margin-block-end: var(--spacing-size-xs);
+}
+
+.spacer {
+  width: 100%;
+  padding: 8px;
+  flex: none;
+}

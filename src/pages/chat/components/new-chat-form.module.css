@@ -1,0 +1,27 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-size-m);
+  padding: var(--spacing-size-xl) var(--spacing-size2xl);
+  border-bottom: 1px solid var(--divider-secondary);
+}
+
+.label {
+  color: var(--text-primary);
+  font-family: var(--family-base);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-detail-strong);
+  line-height: var(--line-height-detail);
+  letter-spacing: var(--letter-spacing-detail);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-size-m);
+}
+
+.field {
+  flex: 1;
+  min-width: 0;
+}

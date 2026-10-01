@@ -1,0 +1,55 @@
+.composer {
+  --composer-background: #fff;
+  --composer-shadow-primary: #00000014;
+  --composer-shadow-secondary: #00000014;
+}
+
+[data-color-scheme="dark"] .composer {
+  --composer-background: #17181c;
+  --composer-shadow-primary: #0000004d;
+  --composer-shadow-secondary: #0000004d;
+}
+
+.composer {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: flex-end;
+  width: calc(100% - 2 * var(--spacing-size2xl));
+  max-width: 708px;
+  margin: 0 auto var(--spacing-size2xl);
+  padding: var(--spacing-size-xs);
+  background-color: var(--composer-background);
+  border-radius: var(--size-border-radius-semantic-border-radius-card);
+  box-shadow:
+    0 4px 16px 0 var(--composer-shadow-primary),
+    0 0 2px 0 var(--composer-shadow-secondary);
+  overflow: hidden;
+}
+
+.composer .field {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  min-width: 0;
+  background-color: transparent;
+}
+
+.composer .textarea {
+  padding: var(--spacing-size-l) var(--spacing-size-m);
+  background-color: transparent;
+  color: var(--text-primary);
+  font-family: var(--family-base);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  outline: none;
+}
+
+.composer .send {
+  display: flex;
+  flex: none;
+  align-items: center;
+  min-height: 40px;
+  padding: var(--spacing-size-xs) var(--spacing-size-m) var(--spacing-size-xs)
+    var(--spacing-size-xs);
+}

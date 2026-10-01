@@ -1,0 +1,21 @@
+.sidebar {
+  flex: 0 0 360px;
+  min-width: 0;
+  background-color: var(--background-primary);
+  border-right: 1px solid var(--divider-secondary);
+}
+
+.list {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: none;
+}
+
+@media (width <= 768px) {
+  .sidebar {
+    flex: 1 0 100%;
+    border-right: none;
+  }
+}

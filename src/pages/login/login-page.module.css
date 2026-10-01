@@ -1,0 +1,37 @@
+.root {
+  --card-shadow-offset-x: 0px;
+  --card-shadow-offset-y: 10px;
+  --card-shadow-blur: 60px;
+  --card-shadow-spread: 0px;
+  --card-shadow-color: #4378ba1f;
+
+  position: relative;
+  isolation: isolate;
+  height: 100dvh;
+}
+
+[data-color-scheme="dark"] .root {
+  --card-shadow-color: #020b264d;
+}
+
+.wrapper {
+  flex: 1;
+  padding: var(--spacing-size3xl);
+}
+
+.card {
+  height: auto;
+  width: 100%;
+  max-width: 380px;
+  padding: var(--spacing-size4xl);
+  border-radius: var(--size-border-radius-semantic-border-radius-card);
+  box-shadow: var(--card-shadow-offset-x) var(--card-shadow-offset-y) var(--card-shadow-blur)
+    var(--card-shadow-spread) var(--card-shadow-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-size3xl);
+  margin-top: var(--spacing-size3xl);
+}

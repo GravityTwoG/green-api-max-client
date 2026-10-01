@@ -1,0 +1,14 @@
+.root {
+  padding: var(--spacing-size-m) var(--spacing-size-xl);
+  border-radius: var(--size-border-radius-action-small);
+  background-color: var(--background-accent-neutral-fade-secondary);
+}
+
+.icon {
+  flex: none;
+  color: var(--icon-negative);
+}
+
+.text {
+  color: var(--text-negative);
+}
