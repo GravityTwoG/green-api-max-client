@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 
-import type { Message } from "../../../shared/types";
+import type { Message } from "@/shared/types";
+
 import { MessageBubble } from "./message-bubble";
 
 import classes from "./message-list.module.css";

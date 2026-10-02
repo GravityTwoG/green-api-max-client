@@ -1,7 +1,7 @@
 import { IconButton, Textarea } from "@maxhub/max-ui";
 import { type FormEvent, type KeyboardEvent, useLayoutEffect, useRef, useState } from "react";
 
-import { SendIcon } from "../../../shared/ui/icons";
+import { SendIcon } from "@/shared/ui/icons";
 
 import classes from "./message-input.module.css";
 

@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { AppError, type ChatEvent, ChatEventKind, GreenApiErrorCode } from "../../shared/api";
-import { useAPI } from "../../shared/providers/api-context";
-import { nowInSeconds } from "../../shared/time";
-import { type Chat, type Message, MessageDirection, MessageStatus } from "../../shared/types";
+import { AppError, type ChatEvent, ChatEventKind, GreenApiErrorCode } from "@/shared/api";
+import { useAPI } from "@/shared/providers/api-context";
+import { nowInSeconds } from "@/shared/time";
+import { type Chat, type Message, MessageDirection, MessageStatus } from "@/shared/types";
 
 export function useChats() {
   const { client } = useAPI();

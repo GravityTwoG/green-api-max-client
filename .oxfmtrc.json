@@ -8,7 +8,30 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "sortImports": {
-    "groups": ["builtin", "external", ["parent", "sibling", "index"], "style", "unknown"],
+    "customGroups": [
+      {
+        "groupName": "shared",
+        "elementNamePattern": ["@/shared/**"]
+      },
+      {
+        "groupName": "pages",
+        "elementNamePattern": ["@/pages/**"]
+      },
+      {
+        "groupName": "app",
+        "elementNamePattern": ["@/**"]
+      }
+    ],
+    "groups": [
+      "builtin",
+      "external",
+      "shared",
+      "pages",
+      "app",
+      ["parent", "sibling", "index"],
+      "style",
+      "unknown"
+    ],
     "newlinesBetween": true
   },
   "arrowParens": "always",

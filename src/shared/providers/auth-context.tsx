@@ -1,7 +1,8 @@
 import { createContext, type ReactNode, useContext, useMemo } from "react";
 
-import { GreenAPIClient } from "../api";
-import { VITE_GREEN_API_URL } from "../config";
+import { GreenAPIClient } from "@/shared/api";
+import { VITE_GREEN_API_URL } from "@/shared/config";
+
 import { useAPI } from "./api-context";
 
 type Credentials = {

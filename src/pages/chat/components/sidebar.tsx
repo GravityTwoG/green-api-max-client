@@ -1,6 +1,7 @@
 import { CellList, Panel } from "@maxhub/max-ui";
 
-import type { Chat } from "../../../shared/types";
+import type { Chat } from "@/shared/types";
+
 import { ChatListItem } from "./chat-list-item";
 import { NewChatForm } from "./new-chat-form";
 

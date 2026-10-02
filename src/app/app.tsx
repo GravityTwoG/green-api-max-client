@@ -1,9 +1,10 @@
 import { MaxUI, useAppearance } from "@maxhub/max-ui";
 import { type PropsWithChildren } from "react";
 
-import { ChatPage } from "../pages/chat/chat-page";
-import { LoginPage } from "../pages/login/login-page";
-import { useAuth } from "../shared/providers/auth-context";
+import { useAuth } from "@/shared/providers/auth-context";
+
+import { ChatPage } from "@/pages/chat/chat-page";
+import { LoginPage } from "@/pages/login/login-page";
 
 export function App() {
   const { isAuthenticated } = useAuth();

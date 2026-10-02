@@ -1,9 +1,10 @@
 import { Button, Flex, Panel, Typography } from "@maxhub/max-ui";
 import { useMemo } from "react";
 
-import { useMediaQuery } from "../../shared/hooks/use-media-query";
-import { FormError } from "../../shared/ui/form-error";
-import { LayoutBackground } from "../../shared/ui/layout-background";
+import { useMediaQuery } from "@/shared/hooks/use-media-query";
+import { FormError } from "@/shared/ui/form-error";
+import { LayoutBackground } from "@/shared/ui/layout-background";
+
 import { ChatHeader } from "./components/chat-header";
 import { MessageInput } from "./components/message-input";
 import { MessageList } from "./components/message-list";

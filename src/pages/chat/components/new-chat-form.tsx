@@ -1,8 +1,8 @@
 import { Button, Input, Typography } from "@maxhub/max-ui";
 import { type FormEvent, useState } from "react";
 
-import { AppError, GreenApiErrorCode } from "../../../shared/api";
-import { FormError } from "../../../shared/ui/form-error";
+import { AppError, GreenApiErrorCode } from "@/shared/api";
+import { FormError } from "@/shared/ui/form-error";
 
 import classes from "./new-chat-form.module.css";
 

@@ -1,8 +1,8 @@
 import { Typography } from "@maxhub/max-ui";
 
-import { formatTimestamp } from "../../../shared/time";
-import { type Message, MessageDirection, MessageStatus } from "../../../shared/types";
-import { ReadIcon, SentIcon, WarningIcon } from "../../../shared/ui/icons";
+import { formatTimestamp } from "@/shared/time";
+import { type Message, MessageDirection, MessageStatus } from "@/shared/types";
+import { ReadIcon, SentIcon, WarningIcon } from "@/shared/ui/icons";
 
 import classes from "./message-bubble.module.css";
 

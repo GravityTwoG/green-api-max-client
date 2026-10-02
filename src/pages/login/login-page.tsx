@@ -1,11 +1,11 @@
 import { Button, Flex, IconButton, Input, Panel, Typography } from "@maxhub/max-ui";
 import { type FormEvent, useState } from "react";
 
-import { AppError, GreenApiErrorCode } from "../../shared/api";
-import { useAuth } from "../../shared/providers/auth-context";
-import { FormError } from "../../shared/ui/form-error";
-import { EyeCrossedIcon, EyeIcon } from "../../shared/ui/icons";
-import { LayoutBackground } from "../../shared/ui/layout-background";
+import { AppError, GreenApiErrorCode } from "@/shared/api";
+import { useAuth } from "@/shared/providers/auth-context";
+import { FormError } from "@/shared/ui/form-error";
+import { EyeCrossedIcon, EyeIcon } from "@/shared/ui/icons";
+import { LayoutBackground } from "@/shared/ui/layout-background";
 
 import classes from "./login-page.module.css";
 

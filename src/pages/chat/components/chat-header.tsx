@@ -1,8 +1,9 @@
 import { EllipsisText, Flex, IconButton, Typography } from "@maxhub/max-ui";
 
-import type { Chat } from "../../../shared/types";
-import { ChatAvatar } from "../../../shared/ui/chat-avatar";
-import { ArrowLeftIcon } from "../../../shared/ui/icons";
+import type { Chat } from "@/shared/types";
+import { ChatAvatar } from "@/shared/ui/chat-avatar";
+import { ArrowLeftIcon } from "@/shared/ui/icons";
+
 import { displayName } from "./display-name";
 
 import classes from "./chat-header.module.css";

@@ -1,6 +1,6 @@
 import { createContext, type ReactNode, useContext, useMemo, useState } from "react";
 
-import type { GreenAPIClient } from "../api";
+import type { GreenAPIClient } from "@/shared/api";
 
 type APIContextValue = {
   client: GreenAPIClient | null;

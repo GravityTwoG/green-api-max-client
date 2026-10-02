@@ -1,8 +1,9 @@
 import { CellSimple, EllipsisText, Flex, Typography } from "@maxhub/max-ui";
 
-import { formatTimestamp } from "../../../shared/time";
-import type { Chat } from "../../../shared/types";
-import { ChatAvatar } from "../../../shared/ui/chat-avatar";
+import { formatTimestamp } from "@/shared/time";
+import type { Chat } from "@/shared/types";
+import { ChatAvatar } from "@/shared/ui/chat-avatar";
+
 import { displayName } from "./display-name";
 
 import classes from "./chat-list-item.module.css";
