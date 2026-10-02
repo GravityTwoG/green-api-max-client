@@ -176,12 +176,21 @@ function applyEvent(chats: Chat[], event: ChatEvent): Chat[] {
   }
 
   return replaceChat(chats, event.chatId, (chat) => {
-    const knownChat = chat.messages.find((item) => item.id === event.idMessage);
-    return knownChat === undefined
-      ? addMessage(chat, message)
+    const knownMessage = chat.messages.find((item) => item.id === event.idMessage);
+    const newChat = {
+      ...chat,
+      name: event.chatName === "" ? chat.name : event.chatName,
+      phone: event.chatPhone === "" ? chat.phone : event.chatPhone,
+    };
+
+    return knownMessage === undefined
+      ? addMessage(newChat, message)
       : addMessage(
-          { ...chat, messages: chat.messages.filter((item) => item.id !== event.idMessage) },
-          { ...knownChat, timestamp: event.timestamp },
+          {
+            ...newChat,
+            messages: newChat.messages.filter((item) => item.id !== event.idMessage),
+          },
+          { ...knownMessage, timestamp: event.timestamp },
         );
   });
 }

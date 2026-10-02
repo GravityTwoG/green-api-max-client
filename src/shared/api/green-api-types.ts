@@ -26,7 +26,6 @@ export type NotificationBody = {
   idMessage: string;
   chatId?: string;
   status?: MessageStatus;
-  description?: string;
   senderData?: {
     chatId: string;
     chatName: string;

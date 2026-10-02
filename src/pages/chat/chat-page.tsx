@@ -1,6 +1,7 @@
 import { Button, Flex, Panel, Typography } from "@maxhub/max-ui";
 import { useMemo } from "react";
 
+import { GreenApiErrorCode } from "@/shared/api";
 import { useMediaQuery } from "@/shared/hooks/use-media-query";
 import { FormError } from "@/shared/ui/form-error";
 import { LayoutBackground } from "@/shared/ui/layout-background";
@@ -12,6 +13,10 @@ import { Sidebar } from "./components/sidebar";
 import { useChats } from "./use-chats";
 
 import classes from "./chat-page.module.css";
+
+const ERROR_TEXT: Record<string, string> = {
+  [GreenApiErrorCode.SendFailed]: "Не удалось отправить сообщение",
+};
 
 export function ChatPage() {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -76,7 +81,9 @@ export function ChatPage() {
               <ChatHeader chat={activeChat} onGoBack={closeChat} />
               <MessageList messages={activeChat.messages} />
 
-              {sendError !== null && <FormError>{sendError.message}</FormError>}
+              {sendError !== null && (
+                <FormError>{ERROR_TEXT[sendError.message] ?? sendError.message}</FormError>
+              )}
 
               <MessageInput
                 isSending={isSending}
