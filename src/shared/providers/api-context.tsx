@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext, useMemo, useState } from "react";
+import { createContext, type ReactNode, use, useMemo, useState } from "react";
 
 import type { GreenAPIClient } from "@/shared/api";
 
@@ -17,7 +17,7 @@ export function APIProvider({ children }: { children: ReactNode }) {
 }
 
 export function useAPI() {
-  const value = useContext(APIContext);
+  const value = use(APIContext);
   if (!value) {
     throw new Error("useAPI must be used within APIProvider");
   }

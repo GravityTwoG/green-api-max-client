@@ -19,7 +19,7 @@ export function NewChatForm({ onSubmit }: NewChatFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const canSubmit = !isLoading && /\S/.test(phone);
+  const canSubmit = !isLoading && phone.trim() !== "";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

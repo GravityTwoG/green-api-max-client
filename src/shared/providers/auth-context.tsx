@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useContext, useMemo } from "react";
+import { createContext, type ReactNode, use, useMemo } from "react";
 
 import { GreenAPIClient } from "@/shared/api";
 import { VITE_GREEN_API_URL } from "@/shared/config";
@@ -41,7 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 }
 
 export function useAuth() {
-  const value = useContext(AuthContext);
+  const value = use(AuthContext);
   if (!value) {
     throw new Error("useAuth must be used within AuthProvider");
   }

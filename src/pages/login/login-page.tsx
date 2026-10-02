@@ -21,7 +21,7 @@ export function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const canSubmit = !isLoading && /\S/.test(idInstance) && /\S/.test(apiTokenInstance);
+  const canSubmit = !isLoading && idInstance.trim() !== "" && apiTokenInstance.trim() !== "";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
