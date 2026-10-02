@@ -16,7 +16,6 @@ import {
 export type { Credentials };
 
 const RECEIVE_TIMEOUT_SECONDS = 60;
-const MIN_POLL_INTERVAL_MS = 5000;
 const INCOMING_MESSAGE = "incomingMessageReceived";
 const OUTGOING_STATUS = "outgoingMessageStatus";
 const OUTGOING_MESSAGE = "outgoingMessageReceived";
@@ -94,8 +93,6 @@ export class GreenAPIClient {
 
             await this.#ackNotification(queued.receiptId, signal);
           }
-
-          await pause(MIN_POLL_INTERVAL_MS, signal);
         } catch (thrown) {
           if (isAbortError(thrown)) {
             return;
@@ -139,24 +136,6 @@ export class GreenAPIClient {
         .res();
     });
   }
-}
-
-function pause(ms: number, signal: AbortSignal): Promise<void> {
-  return new Promise((resolve) => {
-    if (signal.aborted) {
-      resolve();
-      return;
-    }
-
-    const timer = setTimeout(done, ms);
-    signal.addEventListener("abort", done, { once: true });
-
-    function done() {
-      clearTimeout(timer);
-      signal.removeEventListener("abort", done);
-      resolve();
-    }
-  });
 }
 
 function createAPI(baseURL: string) {
