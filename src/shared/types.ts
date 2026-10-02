@@ -1,28 +1,28 @@
-export interface GreenAPICredentials {
-  idInstance: string;
-  apiTokenInstance: string;
+export enum MessageDirection {
+  Incoming = "incoming",
+  Outgoing = "outgoing",
 }
 
-type MessageDirection = "incoming" | "outgoing";
-
-export type MessageStatus = "sending" | "sent" | "failed";
+export enum MessageStatus {
+  Sent = "sent",
+  Delivered = "delivered",
+  Read = "read",
+  Failed = "failed",
+}
 
 export interface Message {
   id: string;
   direction: MessageDirection;
   text: string;
-  time: string;
+  timestamp: number;
   status: MessageStatus;
 }
 
 export interface Chat {
   id: string;
-  phone: string;
   name: string;
-  avatarUrl?: string;
-  online: boolean;
+  phone: string;
   lastMessagePreview: string;
-  lastMessageTime: string;
-  unreadCount: number;
+  lastMessageTimestamp: number;
   messages: Message[];
 }

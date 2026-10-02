@@ -21,7 +21,8 @@
   --bubble-time-color: #06070885;
   --bubble-read-status-color: #0f8ec2;
   --bubble-alert-color: #e64646;
-  --meta-reserved-width: 44px;
+  --meta-width: 29px;
+  --meta-height: 16px;
 
   position: relative;
   display: flex;
@@ -42,13 +43,13 @@
 }
 
 .bubble[data-direction="outgoing"] {
+  --meta-width: 47px;
+
   --bubble-background-1: #e9fdff;
   --bubble-background-2: #e9fdff;
   --bubble-background-3: #e9fdff;
   --bubble-text-color: #011c29;
   --bubble-time-color: #0784b8;
-
-  align-items: flex-end;
 }
 
 [data-color-scheme="dark"] .bubble {
@@ -95,11 +96,11 @@
   word-break: break-word;
 }
 
-.bubble[data-has-meta] .text::after {
+.text::after {
   content: "";
   display: inline-block;
-  width: calc(var(--meta-reserved-width) + var(--spacing-size-xs));
-  height: var(--spacing-size2xl);
+  width: calc(var(--meta-width) + var(--spacing-size-xs));
+  height: var(--meta-height);
 }
 
 .meta {
@@ -126,12 +127,13 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  width: var(--spacing-size2xl);
-  height: var(--spacing-size2xl);
+  width: var(--meta-height);
+  height: var(--meta-height);
   color: var(--bubble-read-status-color);
 }
 
-.statusSent {
+.statusSent,
+.statusRead {
   flex: none;
   color: var(--bubble-read-status-color);
 }

@@ -6,8 +6,6 @@ const GRADIENTS = ["red", "orange", "green", "blue", "purple"] as const;
 interface ChatAvatarProps {
   name: string;
   size?: number;
-  avatarUrl?: string;
-  online?: boolean;
 }
 
 function getInitials(name: string): string {
@@ -28,17 +26,13 @@ function getGradient(name: string): (typeof GRADIENTS)[number] {
   return GRADIENTS[hash] ?? "blue";
 }
 
-export function ChatAvatar({ name, size = 40, avatarUrl, online = false }: ChatAvatarProps) {
+export function ChatAvatar({ name, size = 40 }: ChatAvatarProps) {
   const initials = useMemo(() => getInitials(name), [name]);
   const gradient = useMemo(() => getGradient(name), [name]);
 
   return (
-    <Avatar.Container size={size} onlineStatus={online}>
-      {avatarUrl ? (
-        <Avatar.Image src={avatarUrl} fallbackGradient={gradient} fallback={initials} />
-      ) : (
-        <Avatar.Text gradient={gradient}>{initials}</Avatar.Text>
-      )}
+    <Avatar.Container size={size}>
+      <Avatar.Text gradient={gradient}>{initials}</Avatar.Text>
     </Avatar.Container>
   );
 }

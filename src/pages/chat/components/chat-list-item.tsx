@@ -1,7 +1,9 @@
-import { CellSimple, Counter, EllipsisText, Flex, Typography } from "@maxhub/max-ui";
+import { CellSimple, EllipsisText, Flex, Typography } from "@maxhub/max-ui";
 
+import { formatTimestamp } from "../../../shared/time";
 import type { Chat } from "../../../shared/types";
 import { ChatAvatar } from "../../../shared/ui/chat-avatar";
+import { displayName } from "./display-name";
 
 import classes from "./chat-list-item.module.css";
 
@@ -28,29 +30,14 @@ export function ChatListItem({ chat, active, onSelect }: ChatListItemProps) {
         after: classes.after,
       }}
       onClick={() => onSelect(chat.id)}
-      before={
-        <ChatAvatar name={chat.name} size={64} avatarUrl={chat.avatarUrl} online={chat.online} />
-      }
-      title={<EllipsisText maxLines={1}>{chat.phone}</EllipsisText>}
+      before={<ChatAvatar name={displayName(chat)} size={64} />}
+      title={<EllipsisText maxLines={1}>{displayName(chat)}</EllipsisText>}
       subtitle={<EllipsisText maxLines={2}>{chat.lastMessagePreview}</EllipsisText>}
       after={
-        <Flex
-          direction="column"
-          align="flex-end"
-          justify="space-between"
-          gap="var(--spacing-size2xs)"
-        >
+        <Flex direction="column" align="flex-end" justify="space-between">
           <Typography.Text variant="description" color="tertiary">
-            {chat.lastMessageTime}
+            {formatTimestamp(chat.lastMessageTimestamp)}
           </Typography.Text>
-          {chat.unreadCount > 0 && (
-            <Counter
-              className={classes.counter}
-              value={chat.unreadCount}
-              variant="primary"
-              rounded
-            />
-          )}
         </Flex>
       }
     />

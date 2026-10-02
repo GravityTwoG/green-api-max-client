@@ -3,36 +3,14 @@ import { type PropsWithChildren } from "react";
 
 import { ChatPage } from "../pages/chat/chat-page";
 import { LoginPage } from "../pages/login/login-page";
-import { useMockChat } from "./use-mock-chat";
+import { useAuth } from "../shared/providers/auth-context";
 
 export function App() {
-  const {
-    isAuthenticated,
-    chats,
-    activeChatId,
-    login,
-    createChat,
-    selectChat,
-    closeChat,
-    sendMessage,
-  } = useMockChat();
+  const { isAuthenticated } = useAuth();
 
   return (
     <MaxUI>
-      <ThemedScreen>
-        {isAuthenticated ? (
-          <ChatPage
-            chats={chats}
-            activeChatId={activeChatId}
-            onChatCreate={createChat}
-            onChatSelect={selectChat}
-            onChatClose={closeChat}
-            onMessageSend={sendMessage}
-          />
-        ) : (
-          <LoginPage onLogin={login} />
-        )}
-      </ThemedScreen>
+      <ThemedScreen>{isAuthenticated ? <ChatPage /> : <LoginPage />}</ThemedScreen>
     </MaxUI>
   );
 }

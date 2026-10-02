@@ -8,14 +8,14 @@ import classes from "./message-input.module.css";
 const MAX_ROWS = 12;
 
 export interface MessageInputProps {
-  disabled?: boolean;
+  isSending?: boolean;
   onSend: (text: string) => void;
 }
 
-export function MessageInput({ disabled = false, onSend }: MessageInputProps) {
+export function MessageInput({ isSending = false, onSend }: MessageInputProps) {
   const [text, setText] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const canSend = text.trim() !== "" && !disabled;
+  const canSend = text.trim() !== "" && !isSending;
 
   useLayoutEffect(
     function resizeField() {
@@ -74,7 +74,7 @@ export function MessageInput({ disabled = false, onSend }: MessageInputProps) {
         placeholder="Сообщение"
         aria-label="Сообщение"
         value={text}
-        disabled={disabled}
+        disabled={isSending}
         className={classes.field}
         innerClassNames={{ textarea: classes.textarea }}
         onChange={(event) => setText(event.currentTarget.value)}
@@ -88,6 +88,7 @@ export function MessageInput({ disabled = false, onSend }: MessageInputProps) {
           variant="primary"
           aria-label="Отправить сообщение"
           disabled={!canSend}
+          loading={isSending}
         >
           <SendIcon size={24} />
         </IconButton>

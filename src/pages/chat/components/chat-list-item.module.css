@@ -66,10 +66,3 @@
   margin-left: var(--spacing-size-xl);
   padding-block-end: var(--spacing-size2xs);
 }
-
-.item .counter {
-  padding-block: 0;
-  font-size: var(--font-size-label);
-  font-weight: 700;
-  line-height: var(--line-height-label);
-}

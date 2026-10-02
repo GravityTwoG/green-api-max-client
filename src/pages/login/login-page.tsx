@@ -2,7 +2,7 @@ import { Button, Flex, IconButton, Input, Panel, Typography } from "@maxhub/max-
 import { type FormEvent, useState } from "react";
 
 import { AppError, GreenApiErrorCode } from "../../shared/api";
-import type { GreenAPICredentials } from "../../shared/types";
+import { useAuth } from "../../shared/providers/auth-context";
 import { FormError } from "../../shared/ui/form-error";
 import { EyeCrossedIcon, EyeIcon } from "../../shared/ui/icons";
 import { LayoutBackground } from "../../shared/ui/layout-background";
@@ -13,11 +13,8 @@ const ERROR_TEXT: Record<string, string> = {
   [GreenApiErrorCode.InvalidCredentials]: "Неверные данные инстанса",
 };
 
-export interface LoginPageProps {
-  onLogin: (credentials: GreenAPICredentials) => Promise<void>;
-}
-
-export function LoginPage({ onLogin }: LoginPageProps) {
+export function LoginPage() {
+  const auth = useAuth();
   const [idInstance, setIdInstance] = useState("");
   const [apiTokenInstance, setApiTokenInstance] = useState("");
   const [isTokenVisible, setIsTokenVisible] = useState(false);
@@ -35,7 +32,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
     try {
       setIsLoading(true);
       setError(null);
-      await onLogin({
+      await auth.signIn({
         idInstance: idInstance.trim(),
         apiTokenInstance: apiTokenInstance.trim(),
       });

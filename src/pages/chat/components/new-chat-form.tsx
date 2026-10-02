@@ -31,6 +31,7 @@ export function NewChatForm({ onSubmit }: NewChatFormProps) {
       setIsLoading(true);
       setError(null);
       await onSubmit(phone.trim());
+      setPhone("");
     } catch (thrown) {
       setError(
         thrown instanceof AppError ? (ERROR_TEXT[thrown.code] ?? thrown.message) : String(thrown),
@@ -45,22 +46,24 @@ export function NewChatForm({ onSubmit }: NewChatFormProps) {
       <Typography.Label variant="large-strong">Новый чат</Typography.Label>
 
       <form className={classes.form} onSubmit={handleSubmit}>
-        <Input
-          size="medium"
-          type="tel"
-          inputMode="tel"
-          autoComplete="off"
-          placeholder="+7 999 123-45-67"
-          aria-label="Номер телефона"
-          className={classes.field}
-          value={phone}
-          disabled={isLoading}
-          onChange={(event) => setPhone(event.currentTarget.value)}
-        />
+        <div className={classes.field}>
+          <Input
+            size="medium"
+            type="tel"
+            inputMode="tel"
+            autoComplete="off"
+            placeholder="+7 999 123-45-67"
+            aria-label="Номер телефона"
+            className={classes.input}
+            value={phone}
+            disabled={isLoading}
+            onChange={(event) => setPhone(event.currentTarget.value)}
+          />
+        </div>
         <Button
           type="submit"
           size="small"
-          variant="secondary"
+          variant="primary"
           loading={isLoading}
           disabled={!canSubmit}
         >

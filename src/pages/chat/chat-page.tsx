@@ -1,34 +1,31 @@
-import { Flex, Panel, Typography } from "@maxhub/max-ui";
+import { Button, Flex, Panel, Typography } from "@maxhub/max-ui";
 import { useMemo } from "react";
 
 import { useMediaQuery } from "../../shared/hooks/use-media-query";
-import type { Chat } from "../../shared/types";
+import { FormError } from "../../shared/ui/form-error";
 import { LayoutBackground } from "../../shared/ui/layout-background";
 import { ChatHeader } from "./components/chat-header";
 import { MessageInput } from "./components/message-input";
 import { MessageList } from "./components/message-list";
 import { Sidebar } from "./components/sidebar";
+import { useChats } from "./use-chats";
 
 import classes from "./chat-page.module.css";
 
-export interface ChatPageProps {
-  chats: Chat[];
-  activeChatId: string | null;
-  onChatCreate: (phone: string) => Promise<void>;
-  onChatSelect: (chatId: string) => void;
-  onChatClose: () => void;
-  onMessageSend: (chatId: string, text: string) => void;
-}
-
-export function ChatPage({
-  chats,
-  activeChatId,
-  onChatCreate,
-  onChatSelect,
-  onChatClose,
-  onMessageSend,
-}: ChatPageProps) {
+export function ChatPage() {
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const {
+    chats,
+    activeChatId,
+    subscriptionError,
+    resubscribe,
+    isSending,
+    sendError,
+    createChat,
+    selectChat,
+    closeChat,
+    sendMessage,
+  } = useChats();
 
   const activeChat = useMemo(
     () => chats.find((chat) => chat.id === activeChatId) ?? null,
@@ -44,14 +41,28 @@ export function ChatPage({
         <Sidebar
           chats={chats}
           activeChatId={activeChatId}
-          onChatCreate={onChatCreate}
-          onChatSelect={onChatSelect}
+          onChatCreate={createChat}
+          onChatSelect={selectChat}
         />
       )}
 
       {showChat && (
         <Panel mode="secondary" className={classes.chat}>
           <LayoutBackground />
+
+          {subscriptionError !== null && (
+            <Flex
+              align="center"
+              justify="center"
+              gap="var(--spacing-size-m)"
+              className={classes.empty}
+            >
+              <FormError>{subscriptionError.message}</FormError>
+              <Button size="small" variant="secondary" onClick={resubscribe}>
+                Повторить
+              </Button>
+            </Flex>
+          )}
 
           {activeChat === null ? (
             <Flex align="center" justify="center" className={classes.empty}>
@@ -61,9 +72,15 @@ export function ChatPage({
             </Flex>
           ) : (
             <>
-              <ChatHeader chat={activeChat} onGoBack={onChatClose} />
+              <ChatHeader chat={activeChat} onGoBack={closeChat} />
               <MessageList messages={activeChat.messages} />
-              <MessageInput onSend={(text) => onMessageSend(activeChat.id, text)} />
+
+              {sendError !== null && <FormError>{sendError.message}</FormError>}
+
+              <MessageInput
+                isSending={isSending}
+                onSend={(text) => void sendMessage(activeChat.id, text)}
+              />
             </>
           )}
         </Panel>
